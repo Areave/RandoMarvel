@@ -1,70 +1,102 @@
-# Getting Started with Create React App
+# RandoMarvel SPA
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Приложение для практики работы с библиотекой Реакт и отработки паттернов программирования. 
 
-## Available Scripts
+Пока в стадии разработки
 
-In the project directory, you can run:
+Готовность `40%`
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Что делает
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Загружает данные в формате JSON с официального Marvel API 
+- Хранит архив персонажей в переменной
+- На основе полученных и обработанных данных генерирует карту рандомного персонажа, отсеивая тех, у кого ссылка на изображение ведет на заглушку
+- Обновляет карту по щелчку кнопки
 
-### `npm test`
+## Что используется
+- `React`
+- Компоненты и стили из `Reactstrap`
+- асинхронные запросы (`fetch`)
+- Компоненты-функции
+- Компоненты-классы
+- Хуки, работа с состоянием/props
+- Компоненты высшего порядка
+## Что будет добавляться/исправляться
+- переход по страницам, навигация. динамические ссылки
+- страница для рандомного комикса
+- будет исправлена задержка загрузки картинки
+- тесты
+- стили
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+______________________
+______________________
 
-### `npm run build`
+**About**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Меня зовут Игорь. Я изучаю веб-программирование самостоятельно, и планирую развиваться как разработчик. 
+Что я умею на данный момент:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+*(ссылки ведут на репозитории)*
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Верстка (`Figma`, `Photoshop`, адаптив, медиазапросы, flex, grid)
 
-### `npm run eject`
+[Задание с реальной работы](https://github.com/)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+[Учебный пример посложнее](https://github.com/)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- `JavaScript` средний уровень (активность на странице, запросы, отрисовка)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+[Демонстрационный проект](https://github.com/)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- `React`, `Redux` (в процессе изучения)
 
-## Learn More
+[Самостоятельное SPA (RandoMarvel)](https://github.com/)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+[Учебный проект](https://github.com/)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+[Учебный проект посложнее](https://github.com/)
+- Знаком с технологиями `Wepback`, `Sass`, `npm`, `git`. Есть давний опыт работы с `Java` (оптимизировал рабочую рутину)
 
-### Code Splitting
+- Английский на уровне чтения документации
+- Умение гуглить и не пасовать перед ошибками.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Большую часть свободного времени изучаю React, Redux, начинаю typescript. После этого планирую углубиться в back-end и серверную часть, познакомиться с базами данных, но в целом зависит проекта, на котором буду трудиться.
 
-### Analyzing the Bundle Size
+Мои познания пока не очень уверенные, в них много пробелов. Важность реальной практики трудно переоценить. Поэтому я в поиске работы, на которой буду иметь возможности для профессионального развития, и получать достойное вознаграждение. Открыт к изучению новых технологий, в приоритете программирование, React.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Что касается soft-skills, то я ответственный взрослый человек, сменивший сферу деятельности и усердно работающий над повышением своего уровня. Открытый, не склонен к конфликтам. На данный момент нахожусь в Калининграде, готов к переезду, в приоритете Санкт-Петербург.
 
-### Making a Progressive Web App
+Мой почтовый ящик: work619@yandex.ru
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+_____________________
+# RandoMarvel SPA
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Simple single page application just to improve my programminng skill. Currently working on it. By now it's `40%` ready.
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## What it do
 
-### `npm run build` fails to minify
+- using Marvel API, load JSON data, contains array of 100 marvel characters
+- cash it in state
+- render random character (filter, if it have no picture), using received data for React Components
+- update card by button click
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## What it use
+- `React`
+- some `Reactstrap` components and styles
+- async requests (by `fetch`)
+- Functional components
+- Class components
+- Some Hooks, using state|props
+- High level components
+## What am I working by now
+- showing random comics card on corresponding page
+- create page navigation
+- smooth render of cards
+- after all, adding some styles
+
+
+**My name is Igor, I study web-programming by myself. Currently Lokking for job as a junior frontend develloper, ready to learn and get expirience on real projects. Preferences - React, Redux, typescript, but its depends.
+My email: work619@yandex.ru**
