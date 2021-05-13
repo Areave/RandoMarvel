@@ -7,6 +7,7 @@ import {
     NavLink,
 } from 'reactstrap'
 import './header.css';
+import {Link} from 'react-router-dom'
 
 const Header = () => {
 
@@ -16,14 +17,14 @@ const Header = () => {
                 <NavbarBrand href="/">RandoMarvel</NavbarBrand>
                 <Nav tabs>
                     <NavItem >
-                        <NavLink href="#">Comics</NavLink>
+                        <Link to="/comics/">Comics</Link>
                     </NavItem>
 
                     <NavItem >
-                        <NavLink href="#">Stories</NavLink>
+                        <Link to="/comics/">Autors</Link>
                     </NavItem>
                     <NavItem>
-                        <NavLink href="#">About</NavLink>
+                        <Link to="/comics/">About</Link>
                     </NavItem>
                 </Nav>
             </Navbar>
