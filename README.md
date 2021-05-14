@@ -4,7 +4,7 @@
 
 Готовность `40%`
 
-
+![](https://github.com/Areave/RandoMarvel/blob/master/public/screen.png)
 ## Что делает
 
 - При зарузке получает данные в формате JSON с официального [Marvel API](https://developer.marvel.com) 
