@@ -1,8 +1,21 @@
+.card-body {
+    position: relative;
+    width: 100%;
+    min-height: 400px;
+    overflow: hidden;
+}
+
 .char_img {
     display: block;
+    position: relative;
     margin: 0 auto;
-    max-width:300px;
+    max-height:100%;
+    max-width:100%;
+    width:auto;
     height:auto;
+    /* transform: translateY(-50%);
+    top:50% */
+
 
 }
 

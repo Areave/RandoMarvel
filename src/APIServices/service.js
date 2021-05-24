@@ -65,10 +65,12 @@ class Service {
 
     getCharComicsArray = (charObj) => {
         const charComics = charObj.comics.items;
-        if (charComics.length > 3) {
-            return [charComics[0], charComics[1], charComics[2]];
-        }
-        else { return charComics }
+        // if (charComics.length > 3) {
+        //     return [charComics[0], charComics[1], charComics[2]];
+        // }
+        // else { return charComics }
+
+        return charComics;
     }
 
     getCharInfoSet = (charObj) => {
