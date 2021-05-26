@@ -17,6 +17,8 @@ import ComicsComp from '../comicsComp/comicsComp';
 
 const CharCard = (props) => {
   const { char, updateCharFromCash } = props;
+  console.log(props.history.push)
+
   const { charName, charDesc, charPictureUrl, charAboutUrl, charComics } = char;
   // console.log('get char for card, name', charName)
 
@@ -37,7 +39,7 @@ const CharCard = (props) => {
         />
       </CardBody>
 
-      <ComicsComp comicsArray={charComics} />
+      <ComicsComp history={props.history} comicsArray={charComics} />
 
       <CardFooter className="text-muted">
         <CardLink className="aboutLink" target="blanc" href={charAboutUrl}>
@@ -52,7 +54,7 @@ const CharCard = (props) => {
 };
 
 const f = (View) => {
-  return () => {
+  return (props) => {
     const [char, setChar] = useState(null);
     const [charArray, setCharArray] = useState(null);
 
@@ -98,7 +100,7 @@ const f = (View) => {
     }
 
     const content = char ? (
-      <View char={char} updateCharFromCash={updateCharFromCash} />
+      <View {...props} char={char} updateCharFromCash={updateCharFromCash} />
     ) : (
       <Spinner style={{ margin: 'auto', width: '3rem', height: '3rem' }}>
         {' '}

@@ -45,7 +45,12 @@ const Header = () => {
 
           <HeaderLinks>
             <Link to="/">Main</Link>
+            <Link to="/test/">Test</Link>
+            <Link to="/pers/">Pers</Link>
             <Link to="/comics/">Comics</Link>
+            {/* <Link to="/comics/page1/page2/somelink">longSomeLink</Link>
+            <Link to="/comics/somelink">Somelink</Link> */}
+
           </HeaderLinks>
         </Nav>
       </Navbar>

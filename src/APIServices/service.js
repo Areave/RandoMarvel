@@ -28,7 +28,7 @@ class Service {
     }
 
     getComicsByUrl = async (comicsUrl) => {
-        console.log(comicsUrl + this.jsonKey);
+        console.log('start fetch!', comicsUrl);
 
         const comicsObj = await fetch(comicsUrl + this.jsonKey)
             .then(data => data.json())
@@ -84,7 +84,9 @@ class Service {
     }
 
     getComicsInfoSet = (comObj) => {
+        console.log(comObj)
         return {
+            comId: comObj.id,
             comTitle: comObj.title,
             comDesc: comObj.description,
             comPictureUrl: comObj.images[0].path + "." + comObj.images[0].extension
