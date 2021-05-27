@@ -17,7 +17,6 @@ import ComicsComp from '../comicsComp/comicsComp';
 
 const CharCard = (props) => {
   const { char, updateCharFromCash } = props;
-  console.log(props.history.push)
 
   const { charName, charDesc, charPictureUrl, charAboutUrl, charComics } = char;
   // console.log('get char for card, name', charName)
@@ -57,6 +56,8 @@ const f = (View) => {
   return (props) => {
     const [char, setChar] = useState(null);
     const [charArray, setCharArray] = useState(null);
+
+
 
     const loadCharArrayToCash = async () => {
       const charArray = await service.getCharArray();

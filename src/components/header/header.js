@@ -7,7 +7,6 @@ import styled from 'styled-components';
 const Header = () => {
   const [isActive, toggleActive] = useState(false);
   const toggle = () => toggleActive(!isActive);
-  console.log(isActive);
 
   const HeaderLinks = styled.div`
     a {

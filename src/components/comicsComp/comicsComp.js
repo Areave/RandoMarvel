@@ -14,7 +14,7 @@ const ComicsComp = (props) => {
   const goTo = (uri) => {
     service.getComicsByUrl(uri)
     .then(comics => {
-      props.history.push(`${comics.comId}`);
+      props.history.push(`/comics/${comics.comId}`);
     })
   };
 

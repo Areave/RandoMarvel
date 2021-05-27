@@ -26,10 +26,10 @@ export default class App extends Component {
                 {/* <Route exact path="/" component={CharCard} /> */}
                 <Route exact path="/comics/" component={ComCard} />
                 <Route exact path="/test/" component={TestCard} />
-                <Route exact path="/pers/" component={CharCard} />
+                <Route exact path="/" component={CharCard} />
 
                 <Route exact path="/test/:id" render={({match})=> <h1>{match.params.id}</h1> } />
-                <Route exact path="/pers/:id" render={({match}) => <ComCard id={match.params.id}/>}/>
+                <Route exact path="/comics/:id" render={({match}) => <ComCard id={match.params.id}/>}/>
 
               </Switch>
             </Container>

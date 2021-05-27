@@ -12,23 +12,62 @@ import {
   ListGroup,
   ListGroupItem,
 } from 'reactstrap';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import service from '../../APIServices/service';
 
-const ComCard = ({id}) => {
-
-    return (
+const ComCard = ({comic}) => {
+  const {comId, comTitle, comDesc, comPictureUrl} = comic;
+  return (
     <>
-      <h1>Comics! {id}</h1>
+      <>
+        <CardTitle className="head" tag="h4">
+          Comic from Marvel API
+        </CardTitle>
+        <CardHeader tag="h3">{comTitle}</CardHeader>
+        <CardBody>
+          {/* <CardTitle tag="h3">{charName}</CardTitle> */}
+          <CardText>{comDesc}</CardText>
+          <CardImg
+            top
+            className="char_img"
+            src={comPictureUrl}
+            alt="random character"
+          />
+        </CardBody>
+
+        {/* <CardFooter className="text-muted">
+          <CardLink className="aboutLink" target="blanc" href={charAboutUrl}>
+            Learn more about {charName}
+          </CardLink>
+          <Button color="danger" onClick={updateCharFromCash}>
+            Update char
+          </Button>
+        </CardFooter> */}
+      </>
     </>
   );
 };
 
 const f = (View) => {
   return ({id}) => {
-    const content = <View id={id}/>;
+    const [comic, setComic] = useState(null);
 
-    return <Card>{content}</Card>;
+    useEffect(() => {
+      service.getComicsById(`/${id}`).then((comic) => {
+
+        setComic(comic);
+      });
+    }, []);
+
+    if (!comic) return <h1>no comics!</h1>;
+
+    console.log(comic)
+
+    return (
+      <Card>
+        <View comic={comic} />
+      </Card>
+    );
   };
 };
 
