@@ -8,6 +8,7 @@ import {Container, Spinner} from 'reactstrap';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import service from '../../APIServices/service';
 import TestCard from '../testCard';
+import TemplateHOC from '../templateHOC';
 
 export default class App extends Component {
   render() {
@@ -22,14 +23,30 @@ export default class App extends Component {
               fluid={true}
             >
               <Switch>
-
                 {/* <Route exact path="/" component={CharCard} /> */}
-                <Route exact path="/comics/" component={ComCard} />
-                <Route exact path="/test/" component={TestCard} />
-                <Route exact path="/" component={CharCard} />
+                {/* <Route exact path="/comics/" render={ComCard} /> */}
+                {/* <Route exact path="/characters/" component={CharCard} /> */}
+                <Route
+                  exact
+                  path="/characters/"
+                  render={props => {
+                    return <CharCard {...props} />;
+                  }}
+                />
 
-                <Route exact path="/test/:id" render={({match})=> <h1>{match.params.id}</h1> } />
-                <Route exact path="/comics/:id" render={({match}) => <ComCard id={match.params.id}/>}/>
+                <Route
+                  exact
+                  path="/comics/"
+                  render={props => {
+                    return <ComCard {...props} />;
+                  }}
+                />
+
+                <Route
+                  exact
+                  path="/comics/:id"
+                  render={props => <ComCard {...props} sort={'/comics'} id={props.match.params.id} />}
+                />
 
               </Switch>
             </Container>

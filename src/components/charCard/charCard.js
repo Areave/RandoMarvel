@@ -15,36 +15,36 @@ import service from '../../APIServices/service';
 import './charCard.css';
 import ComicsComp from '../comicsComp/comicsComp';
 
-const CharCard = (props) => {
-  const { char, updateCharFromCash } = props;
 
-  const { charName, charDesc, charPictureUrl, charAboutUrl, charComics } = char;
-  // console.log('get char for card, name', charName)
+const CharCard = (props) => {
+  const { item, updateItemFromCash, history} = props;
+
+  const { name, desc, pictureUrl, aboutUrl, comics } = item;
 
   return (
     <>
       <CardTitle className="head" tag="h4">
         Random character from Marvel API
       </CardTitle>
-      <CardHeader tag="h3">{charName}</CardHeader>
+      <CardHeader tag="h3">{name}</CardHeader>
       <CardBody>
         {/* <CardTitle tag="h3">{charName}</CardTitle> */}
-        <CardText>{charDesc}</CardText>
+        <CardText>{desc}</CardText>
         <CardImg
           top
-          className="char_img"
-          src={charPictureUrl}
+          className="item_img"
+          src={pictureUrl}
           alt="random character"
         />
       </CardBody>
 
-      <ComicsComp history={props.history} comicsArray={charComics} />
+      <ComicsComp history={history} comicsArray={comics} />
 
       <CardFooter className="text-muted">
-        <CardLink className="aboutLink" target="blanc" href={charAboutUrl}>
-          Learn more about {charName}
+        <CardLink className="aboutLink" target="blanc" href={aboutUrl}>
+          Learn more about {name}
         </CardLink>
-        <Button color="danger" onClick={updateCharFromCash}>
+        <Button color="danger" onClick={updateItemFromCash}>
           Update char
         </Button>
       </CardFooter>
@@ -52,58 +52,49 @@ const CharCard = (props) => {
   );
 };
 
-const f = (View) => {
+
+const templateHOC = (View) => {
   return (props) => {
-    const [char, setChar] = useState(null);
-    const [charArray, setCharArray] = useState(null);
+    const sort = props.match.url;
 
+    const [item, setItem] = useState(null);
+    const [itemArray, setItemArray] = useState(null);
 
-
-    const loadCharArrayToCash = async () => {
-      const charArray = await service.getCharArray();
-      setCharArray(charArray);
+    const loadItemArrayToCash = async () => {
+      console.log('load!');
+      const itemArray = await service.getItemsArray(sort);
+      setItemArray(itemArray);
     };
 
-    // const updateChar = () => {
-    //     service.getRandomChar()
-    //         .then(char => {
-    //             const charComics = char.charComics.map(comics => {
-    //                 return
-    //             })
-    //             char.charComics = charComics;
-    //             return char;
-    //         })
-    //         .then(char => setChar(char));
-    // }
-
-    const updateCharFromCash = () => {
-      if (!charArray) return;
+    const updateItemFromCash = () => {
+      if (!itemArray) return;
       else {
         // console.log("updateCharFromCash")
-        const randomIndex = Math.floor(Math.random() * charArray.length);
-        const char = service.getCharInfoSet(charArray[randomIndex]);
+        const randomIndex = Math.floor(Math.random() * itemArray.length);
+        const item = service.getItemInfoSet(itemArray[randomIndex], sort);
         // console.log(char.charPictureUrl, char.charName);
         if (
-          char.charPictureUrl.includes('image_not_available') ||
-          char.charPictureUrl.includes('4c002e0305708.gif')
+          item.pictureUrl.includes('image_not_available') ||
+          item.pictureUrl.includes('4c002e0305708.gif')
         ) {
-          updateCharFromCash();
+          updateItemFromCash();
         } else {
-          setChar(char);
+          console.log(item)
+          setItem(item);
         }
       }
     };
 
-    if (!charArray) {
-      loadCharArrayToCash();
-    } else if (charArray && !char) {
-      updateCharFromCash();
+    if (!itemArray) {
+      loadItemArrayToCash();
+    } else if (itemArray && !item) {
+      updateItemFromCash();
     }
 
-    const content = char ? (
-      <View {...props} char={char} updateCharFromCash={updateCharFromCash} />
+    const content = item ? (
+      <View {...props} item={item} updateItemFromCash={updateItemFromCash} />
     ) : (
-      <Spinner style={{ margin: 'auto', width: '3rem', height: '3rem' }}>
+      <Spinner style={{margin: 'auto', width: '3rem', height: '3rem'}}>
         {' '}
       </Spinner>
     );
@@ -112,4 +103,4 @@ const f = (View) => {
   };
 };
 
-export default f(CharCard);
+export default templateHOC(CharCard);

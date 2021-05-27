@@ -9,12 +9,15 @@ import service from '../../APIServices/service';
 
 const ComicsComp = (props) => {
 
-  const {comicsArray} = props;
+  console.log(props)
+
+  const {comicsArray, history} = props;
 
   const goTo = (uri) => {
     service.getComicsByUrl(uri)
     .then(comics => {
-      props.history.push(`/comics/${comics.comId}`);
+      console.log(comics);
+      history.push(`/comics/${comics.id}`);
     })
   };
 

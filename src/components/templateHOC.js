@@ -1,50 +1,31 @@
-import {
-  Spinner,
-  Card,
-  CardHeader,
-  CardTitle,
-  CardBody,
-  CardText,
-  CardImg
-} from 'reactstrap';
-import {useState} from 'react';
-import service from '../../APIServices/service';
+import React, {useState} from 'react';
+import service from '../APIServices/service';
+import {Spinner, Card} from 'reactstrap';
+import TestCard from './testCard';
+import CharCard from './charCard/charCard';
+import ComCard from './comCard/comCard'
 
-const ComCard = ({item}) => {
-  const {title, desc, pictureUrl} = item;
-  return (
-      <>
-        <CardTitle className="head" tag="h4">
-          Comic from Marvel API
-        </CardTitle>
-        <CardHeader tag="h3">{title}</CardHeader>
-        <CardBody>
-          {/* <CardTitle tag="h3">{charName}</CardTitle> */}
-          <CardText>{desc}</CardText>
-          <CardImg
-            top
-            className="item_img"
-            src={pictureUrl}
-            alt="random comic"
-          />
-        </CardBody>
-      </>
-  );
+const pageDefinder = (sort) => {
+  switch (sort) {
+    case '/characters':
+      return CharCard;
+      case '/comics':
+        return ComCard;
+    default:
+      return null;
+  }
 };
 
-
-const templateHOC = (View) => {
+const templateHOC = () => {
   return (props) => {
-
-    console.log(props)
-    const {id, sort} = props;
-
+    const {sort} = props;
+    const View = pageDefinder(sort);
 
     const [item, setItem] = useState(null);
     const [itemArray, setItemArray] = useState(null);
 
     const loadItemArrayToCash = async () => {
-      console.log('load!', sort);
+      console.log('load!');
       const itemArray = await service.getItemsArray(sort);
       setItemArray(itemArray);
     };
@@ -68,21 +49,9 @@ const templateHOC = (View) => {
       }
     };
 
-
-    if(id) {
-      console.log(id, sort)
-      service.getItemById(id, sort)
-      .then(item=>{
-
-        console.log(item.title, 'title!')
-        setItem(item)
-      })
-    }
-
     if (!itemArray) {
       loadItemArrayToCash();
     } else if (itemArray && !item) {
-      console.log(item)
       updateItemFromCash();
     }
 
@@ -98,4 +67,4 @@ const templateHOC = (View) => {
   };
 };
 
-export default templateHOC(ComCard);
+export default templateHOC();
