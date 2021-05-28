@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
-import service from '../Services/service';
+import service from './service';
 import {Spinner, Card} from 'reactstrap';
-import TestCard from './testCard';
-import CharCard from './charCard/charCard';
-import ComCard from './comCard/comCard'
+import TestCard from '../components/testCard';
+import CharCard from '../components/charCard/charCard';
+import ComCard from '../components/comCard/comCard'
 
 const pageDefinder = (sort) => {
   switch (sort) {

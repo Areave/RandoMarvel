@@ -1,4 +1,4 @@
-class Service {
+class APIService {
   // jsonComicsUrl = "http://gateway.marvel.com/v1/public/characters/1011334/comics";
   jsonCharsUrl = 'http://gateway.marvel.com/v1/public/characters';
   jsonComsUrl = 'http://gateway.marvel.com//v1/public/comics';
@@ -9,8 +9,8 @@ class Service {
   // jsonFull = "http://gateway.marvel.com/v1/public/characters?ts=1&apikey=d5f8ad0e19610e1792c218a4b6357287&hash=aa0cbdb02c9903548c372e9df84586c8"
 
   getItemsArray = async (url) => {
+    console.log('get items!')
     const offset = Math.floor(Math.random() * 10) * 100;
-    // console.log(this.jsonCharsUrl + this.jsonKey + offset);
     const itemsArray = await fetch(
       this.jsonDataUrl + url + this.jsonKey + offset
     )
@@ -26,9 +26,15 @@ class Service {
       console.log(this.jsonDataUrl + sort + '/' + id + '/' + this.jsonKey)
     const item = await fetch(this.jsonDataUrl + sort + '/' + id + '/' + this.jsonKey)
       .then((item) => item.json())
-      .then((item) => this.getItemInfoSet(item, sort));
+      .then((item) => this.getItemInfoSet(item, sort))
     return item;
   };
+
+  getItemByUrl = async (url) => {
+  const item = await fetch(url + this.jsonKey)
+    .then((item) => item.json())
+  return item;
+};
 
   getItemInfoSet = (itemObj, sort) => {
     switch (sort) {
@@ -106,6 +112,7 @@ class Service {
 
   getCharInfoSet = (charObj) => {
     return {
+      id: charObj.id,
       name: charObj.name,
       desc: charObj.description,
       aboutUrl: this.getCharAboutUrl(charObj),
@@ -114,7 +121,7 @@ class Service {
     };
   };
 
-  getComicsInfoSet = (comObj) => {
+  getComInfoSet = (comObj) => {
     return {
       id: comObj.id,
       title: comObj.title,
@@ -124,6 +131,4 @@ class Service {
   };
 }
 
-const service = new Service();
-
-export default service;
+export default new APIService();

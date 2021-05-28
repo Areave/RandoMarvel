@@ -3,22 +3,19 @@ import {
   Button,
   ListGroupItem,
   ListGroup,
-  List,
 } from 'reactstrap';
-import service from '../../APIServices/service';
+import apiService from '../../Services/APIservice';
 
-const ComicsComp = (props) => {
-
-  console.log(props)
-
-  const {comicsArray, history} = props;
+const ItemsLinkList = (props) => {
+  const {comicsArray, history, match} = props;
+  const sort = match.url;
 
   const goTo = (uri) => {
-    service.getComicsByUrl(uri)
-    .then(comics => {
-      console.log(comics);
-      history.push(`/comics/${comics.id}`);
-    })
+    apiService.getItemByUrl(uri, sort).then((rawItem) => {
+      const item = null
+      console.log(item);
+      history.push(`${sort}/${item.id}`);
+    });
   };
 
   if (!comicsArray.length) {
@@ -30,14 +27,18 @@ const ComicsComp = (props) => {
           <Button color="primary" id="toggler" style={{marginBottom: '1rem'}}>
             From comics:
           </Button>
+
           <UncontrolledCollapse toggler="#toggler">
-            {comicsArray.map((comics) => {
+            {comicsArray.map((comics, index) => {
               return (
-                <ListGroupItem tag="a" onClick={()=>goTo(comics.resourceURI) }>
+                <ListGroupItem
+                  key={index}
+                  tag="a"
+                  className="comic-link"
+                  onClick={() => goTo(comics.resourceURI)}
+                >
                   {comics.name}
                 </ListGroupItem>
-
-
               );
             })}
           </UncontrolledCollapse>
@@ -47,4 +48,4 @@ const ComicsComp = (props) => {
   }
 };
 
-export default ComicsComp;
+export default ItemsLinkList;

@@ -4,10 +4,7 @@ import './header.css';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
-const Header = () => {
-  const [isActive, toggleActive] = useState(false);
-  const toggle = () => toggleActive(!isActive);
-
+const Header = (props) => {
   const HeaderLinks = styled.div`
     a {
       display: inline-block;
@@ -26,8 +23,7 @@ const Header = () => {
         <Nav tabs>
           <HeaderLinks>
             <Link to="/">Main</Link>
-            <Link to="/characters">Characters</Link>
-            <Link to="/comics">Comics</Link>
+            {props.linkArray}
           </HeaderLinks>
         </Nav>
       </Navbar>
