@@ -7,14 +7,12 @@ import {
 import apiService from '../../Services/APIservice';
 
 const ItemsLinkList = (props) => {
-  const {comicsArray, history, match} = props;
-  const sort = match.url;
+  const {comicsArray, history, match, type} = props;
+
 
   const goTo = (uri) => {
-    apiService.getItemByUrl(uri, sort).then((rawItem) => {
-      const item = null
-      console.log(item);
-      history.push(`${sort}/${item.id}`);
+    apiService.getItemByUrl(uri, type).then((item) => {
+      history.push(`${type}/${item.id}`);
     });
   };
 

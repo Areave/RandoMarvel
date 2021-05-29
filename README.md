@@ -2,15 +2,17 @@
 
 Приложение для практики работы с библиотекой Реакт.
 
-Готовность `40%`
+Готовность `70%`
 
 ![](https://github.com/Areave/RandoMarvel/blob/master/public/screen.png)
 ## Что делает
 
+- Основные данные лежат в одном объекте, методы загрузки и обработки данных типизированы, легко масштабировать
 - При зарузке получает данные в формате JSON с официального [Marvel API](https://developer.marvel.com) 
-- Хранит архив персонажей в состоянии компонента
-- Обрабатывает данные, на их основе генерирует карту случайного персонажа
-- Обновляет карту по клику на кнопке
+- При переходе по корневым ссылкам отображает карточку рандомного item'а (персонажа, комикса и т.д.)
+- при переходе по ссылкам конкретных item'ов подхватывает id через Route.history, загружает по id, отображает
+- Обновляет карточку по клику на кнопке
+- 
 
 ## Что используется
 - Библиотека `React`
@@ -21,11 +23,11 @@
 - Хуки, работа с state/props
 - Компоненты высшего порядка
 ## Что будет добавляться/исправляться
-- переход по страницам, навигация. динамические ссылки
-- страница для рандомного комикса
+- оптимизация кода, сведение компонентов к шаблону
 - будет исправлена задержка загрузки картинки
+- другие мелкие недочеты
 - тесты
-- стили
+- стили покрасивее
 
 ______________________
 
@@ -34,28 +36,3 @@ ______________________
 
 **[Обо мне и ссылки на проекты](https://github.com/Areave/about/blob/main/README.md)**
 _____________________
-# RandoMarvel SPA
-
-Simple single page application just to improve my programminng skill. Currently working on it. By now it's `40%` ready.
-
-
-## What it do
-
-- using Marvel API, load JSON data, contains array of 100 marvel characters
-- cash it in state
-- render random character (filter, if it have no picture), using received data for React Components
-- update card by button click
-
-## What it use
-- `React`
-- some `Reactstrap` components and styles
-- async requests (by `fetch`)
-- Functional components
-- Class components
-- Some Hooks, using state|props
-- High level components
-## What am I working by now
-- showing random comics card on corresponding page
-- create page navigation
-- smooth render of cards
-- after all, adding some styles

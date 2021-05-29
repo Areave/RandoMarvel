@@ -13,21 +13,18 @@ import {
 import {useEffect, useState} from 'react';
 import service from '../../Services/APIservice';
 import routerService from '../../Services/RouterService';
-import './charCard.css';
 import ItemsLinkList from '../itemsLinkList/itemsLinkList';
 
 const CharCard = (props) => {
   const {item, updateItem, history, match} = props;
   const {name, desc, pictureUrl, aboutUrl, comics} = item;
+  const listOf = '/comics';
 
   return (
     <>
-      <CardTitle className="head" tag="h4">
-        Random character from Marvel API
-      </CardTitle>
+      <CardTitle tag="h4">Random character from Marvel API</CardTitle>
       <CardHeader tag="h3">{name}</CardHeader>
       <CardBody>
-        {/* <CardTitle tag="h3">{charName}</CardTitle> */}
         <CardText>{desc}</CardText>
         <CardImg
           top
@@ -37,7 +34,12 @@ const CharCard = (props) => {
         />
       </CardBody>
 
-      <ItemsLinkList history={history} match={match} comicsArray={comics} />
+      <ItemsLinkList
+        type={listOf}
+        history={history}
+        match={match}
+        comicsArray={comics}
+      />
 
       <CardFooter className="text-muted">
         <CardLink className="aboutLink" target="blanc" href={aboutUrl}>
@@ -53,21 +55,45 @@ const CharCard = (props) => {
 
 const templateHOC = (View) => {
   return (props) => {
-    const sort = props.match.url;
-    const getItemInfoSet = routerService.objectInfoDefinder(props);
+    const {type, history, match} = props;
+
+    console.log(history.location.pathname);
+    console.log(type);
+    console.log(match.isExact);
+
+    let id = null;
+
+    if (!match.isExact) {
+      const pathName = history.location.pathname;
+      const indexOfLastSlash = pathName.lastIndexOf('/');
+      id = pathName.slice(indexOfLastSlash + 1);
+    }
+
+    const getItemInfoSet = routerService.objectInfoDefinder(type);
 
     const [item, setItem] = useState(null);
 
     const updateItem = () => {
-      service.getItemsArray(sort).then((array) => {
+      service.getItemsArray(type).then((array) => {
         const randomIndex = Math.floor(Math.random() * array.length);
         const item = getItemInfoSet(array[randomIndex]);
         setItem(item);
       });
     };
 
+    const loadItemById = (id, type) => {
+      service.getItemById(id, type).then((item) => {
+        setItem(item);
+      });
+    };
+
     useEffect(() => {
-      updateItem()
+      if (id) {
+        console.log('by id');
+        loadItemById(id, type);
+      } else {
+        updateItem();
+      }
     }, []);
 
     const content = item ? (

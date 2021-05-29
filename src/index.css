@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
 }
 
 code {
@@ -14,4 +15,91 @@ code {
 
 .comic-link {
   cursor: pointer;
+}
+
+
+
+#root {
+ min-height: 100vh;
+}
+
+.app {
+  background: url('./background-img.jpg') rgba(255,255,255,0.6);
+  background-blend-mode: color;
+  min-height: 100vh;
+}
+
+.themed-container {
+  padding: 50px;
+
+}
+
+/* header */
+
+.navbar {
+  padding: 20px;
+}
+
+
+
+/* card */
+
+.card {
+  /* margin-left: 10% ; */
+  margin: 0 auto;
+  max-width: 400px;
+  min-height: 500px;
+
+
+}
+
+.card-title{
+  text-align: center;
+  font-weight: lighter;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.char_img {
+  display: block;
+  position: relative;
+  margin: 0 auto;
+  max-height:100%;
+  max-width:100%;
+  width:auto;
+  height:auto;
+
+}
+
+.card-body {
+  position: relative;
+  width: 100%;
+  min-height: 400px;
+  overflow: hidden;
+  box-shadow: 1px 1px 94px 65px rgba(34, 60, 80, 0.24);
+  border: 2px outset rgba(164,58,56,0.17);
+
+}
+.card-footer {
+  display: flex;
+  justify-content: space-between ;
+}
+
+.card-link {
+  padding: 10px 20px;
+}
+
+.card-header {
+  text-align: center;
+}
+
+
+
+.aboutLink{
+  cursor: pointer;
+}
+
+.comics-title {
+  text-align: center;
+  padding: 10px;
 }

@@ -9,7 +9,7 @@ class APIService {
   // jsonFull = "http://gateway.marvel.com/v1/public/characters?ts=1&apikey=d5f8ad0e19610e1792c218a4b6357287&hash=aa0cbdb02c9903548c372e9df84586c8"
 
   getItemsArray = async (url) => {
-    console.log('get items!')
+    console.log('get items!');
     const offset = Math.floor(Math.random() * 10) * 100;
     const itemsArray = await fetch(
       this.jsonDataUrl + url + this.jsonKey + offset
@@ -22,19 +22,26 @@ class APIService {
     return itemsArray;
   };
 
-  getItemById = async (id, sort) => {
-      console.log(this.jsonDataUrl + sort + '/' + id + '/' + this.jsonKey)
-    const item = await fetch(this.jsonDataUrl + sort + '/' + id + '/' + this.jsonKey)
+  getItemById = async (id, type) => {
+    // console.log(this.jsonDataUrl + type + '/' + id + '/' + this.jsonKey);
+    const item = await fetch(this.jsonDataUrl + type + '/' + id + this.jsonKey)
       .then((item) => item.json())
-      .then((item) => this.getItemInfoSet(item, sort))
+      .then((item) => item.data.results[0])
+      .then((item) => this.getItemInfoSet(item, type));
     return item;
   };
 
-  getItemByUrl = async (url) => {
-  const item = await fetch(url + this.jsonKey)
-    .then((item) => item.json())
-  return item;
-};
+  getItemByUrl = async (url, type) => {
+    const item = await fetch(url + this.jsonKey)
+      .then((item) => item.json())
+      .then((rawItem) => {
+        const item = rawItem.data.results[0];
+        return this.getItemInfoSet(item, type);
+      });
+    return item;
+  };
+
+  // obj.data.results
 
   getItemInfoSet = (itemObj, sort) => {
     switch (sort) {
@@ -47,7 +54,6 @@ class APIService {
         return itemObj;
     }
   };
-
 
   getCharArray = async () => {
     // console.log('fetch array')
@@ -121,7 +127,8 @@ class APIService {
     };
   };
 
-  getComInfoSet = (comObj) => {
+  getComicsInfoSet = (comObj) => {
+    // console.log(comObj)
     return {
       id: comObj.id,
       title: comObj.title,

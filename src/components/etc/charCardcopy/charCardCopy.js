@@ -11,7 +11,7 @@ import {
   Button,
 } from 'reactstrap';
 import { useState } from 'react';
-import service from '../../Services/APIservice';
+import service from '../../../Services/APIservice';
 import './charCard.css';
 import ComicsComp from '../comicsComp/comicsComp';
 

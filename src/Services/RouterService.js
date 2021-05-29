@@ -1,51 +1,68 @@
 import {Route, Link} from 'react-router-dom';
-import CharCard from '../components/charCard/charCard';
-import ComCard from '../components/comCard/comCard';
-import TestCard from '../components/testCard';
+import CharCard from '../components/pages/charCard';
+import ComCard from '../components/pages/comCard';
+// import TestCard from '../components/etc/testCard';
 import apiService from './APIservice';
 
 class RouterService {
   linkObj = {
+    '/comics': {page: ComCard, infoGetter: apiService.getComicsInfoSet},
     '/characters': {page: CharCard, infoGetter: apiService.getCharInfoSet},
-    '/comics': {page: ComCard, infoGetter: apiService.getComInfoSet},
+    '/creators': {page: CharCard, infoGetter: apiService.getCharInfoSet},
   };
 
   routersArray = Object.keys(this.linkObj).map((item, index) => {
     return (
-
       <Route
-      key={index}
-        exact
+        key={index}
         path={item}
+        render={(props) => {
+          console.log(props)
+          return this.pageDefinder(props);
+        }}
+      />
+    );
+  });
+
+  routersSubPageArray = Object.keys(this.linkObj).map((item, index) => {
+    return (
+      <Route
+        key={index}
+        exact
+        path={item + '/:id'}
         render={(props) => {
           return this.pageDefinder(props);
         }}
       />
-       
     );
   });
 
   linkArray = Object.keys(this.linkObj).map((item, index) => {
-    return <Link key={index} to={item}>{item}</Link>;
+    const linkName = item[1].toUpperCase().concat(item.slice(2));
+    return (
+      <Link key={index} to={item}>
+        {linkName}
+      </Link>
+    );
   });
 
+  getSortString = (str) => {
+    const ind = str.indexOf('/', 1);
+
+    if (ind < 0) return str;
+    else return str.slice(0, ind);
+  };
+
   pageDefinder = (props) => {
-    const sort = props.match.url;
+    const sort = this.getSortString(props.match.url);
     const Comp = this.linkObj[sort].page;
-    return <Comp {...props} />;
+    return <Comp type={sort} {...props}/>;
   };
 
-  objectInfoDefinder = (props) => {
-
-    const sort = props.match.url;
-    const infoGetter = this.linkObj[sort].infoGetter;
-    return infoGetter;
-
-
-
+  objectInfoDefinder = (type) => {
+    const infogetter = this.linkObj[type].infoGetter;
+    return infogetter;
   };
-
-
 }
 
 export default new RouterService();

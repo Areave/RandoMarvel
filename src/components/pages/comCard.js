@@ -11,8 +11,6 @@ import {useState, useEffect} from 'react';
 import service from '../../Services/APIservice';
 import routerService from '../../Services/RouterService';
 
-
-
 const ComCard = ({item}) => {
   const {title, desc, pictureUrl} = item;
   return (
@@ -31,24 +29,46 @@ const ComCard = ({item}) => {
 };
 
 const templateHOC = (View) => {
-
   return (props) => {
+    const {type, history, match} = props;
 
-    const sort = props.match.url;
-    const getItemInfoSet = routerService.objectInfoDefinder(props);
+    console.log(history.location.pathname)
+    console.log(type)
+    console.log(match.isExact)
+
+    let id = null;
+
+    if (!match.isExact) {
+      const pathName = history.location.pathname;
+      const indexOfLastSlash = pathName.lastIndexOf('/');
+      id = pathName.slice(indexOfLastSlash+1)
+    }
+
+    const getItemInfoSet = routerService.objectInfoDefinder(type);
 
     const [item, setItem] = useState(null);
 
     const updateItem = () => {
-      service.getItemsArray(sort).then((array) => {
+      service.getItemsArray(type).then((array) => {
         const randomIndex = Math.floor(Math.random() * array.length);
         const item = getItemInfoSet(array[randomIndex]);
         setItem(item);
       });
     };
 
+    const loadItemById = (id, type) => {
+      service.getItemById(id, type).then((item) => {
+        setItem(item);
+      });
+    };
+
     useEffect(() => {
-      updateItem()
+      if (id) {
+        console.log('by id');
+        loadItemById(id, type);
+      } else {
+        updateItem();
+      }
     }, []);
 
     const content = item ? (
