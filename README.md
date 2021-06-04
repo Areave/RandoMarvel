@@ -1,4 +1,4 @@
-# RandoMarvel SPA (в разработке)
+# RandoMarvel SPA
 
 Приложение для практики работы с библиотекой Реакт.
 
@@ -34,5 +34,5 @@ ______________________
 
 **About**
 
-**[Обо мне и ссылки на проекты](https://github.com/Areave/about/blob/main/README.md)**
+**[Обо мне и ссылки на проекты](https://github.com/Areave/about#readme)**
 _____________________
