@@ -6,10 +6,9 @@ import {
   CardImg,
 } from 'reactstrap';
 import ItemsLinkList from '../itemsLinkList/itemsLinkList'
-
 import templateHOC from '../../Services/templateHOC'
 
-const ComCard = ({item, history}) => {
+const StoryCard = ({item, history}) => {
   const {title, desc, pictureUrl, links} = item;
   return (
     <>
@@ -30,5 +29,4 @@ const ComCard = ({item, history}) => {
   );
 };
 
-
-export default templateHOC(ComCard);
+export default templateHOC(StoryCard);

@@ -1,14 +1,22 @@
 import {Route, Link} from 'react-router-dom';
-import CharCard from '../components/pages/charCard';
+
 import ComCard from '../components/pages/comCard';
-// import TestCard from '../components/etc/testCard';
+import StoryCard from '../components/pages/storyCard';
+import ItemCard from '../components/pages/itemCard';
+import CreatorCard from '../components/pages/creatorCard';
+import EventCard from '../components/pages/eventCard'
+import SeriesCard from '../components/pages/seriesCard'
+
 import apiService from './APIservice';
 
 class RouterService {
   linkObj = {
     '/comics': {page: ComCard, infoGetter: apiService.getComicsInfoSet},
-    '/characters': {page: CharCard, infoGetter: apiService.getCharInfoSet},
-    '/creators': {page: CharCard, infoGetter: apiService.getCharInfoSet},
+    '/characters': {page: ItemCard, infoGetter: apiService.getCharInfoSet},
+    '/creators': {page: CreatorCard, infoGetter: apiService.getCharInfoSet},
+    '/stories': {page: StoryCard, infoGetter: apiService.getComicsInfoSet},
+    '/events': {page: EventCard, infoGetter: apiService.getComicsInfoSet},
+    '/series': {page: SeriesCard, infoGetter: apiService.getComicsInfoSet},
   };
 
   routersArray = Object.keys(this.linkObj).map((item, index) => {
@@ -17,7 +25,7 @@ class RouterService {
         key={index}
         path={item}
         render={(props) => {
-          console.log(props)
+          // console.log(props)
           return this.pageDefinder(props);
         }}
       />

@@ -14,6 +14,7 @@ import {useEffect, useState} from 'react';
 import service from '../../Services/APIservice';
 import routerService from '../../Services/RouterService';
 import ItemsLinkList from '../itemsLinkList/itemsLinkList';
+// import templateHOC from '../../Services/templateHOC'
 
 const CharCard = (props) => {
   const {item, updateItem, history, match} = props;
@@ -55,11 +56,14 @@ const CharCard = (props) => {
 
 const templateHOC = (View) => {
   return (props) => {
+    
     const {type, history, match} = props;
 
-    console.log(history.location.pathname);
-    console.log(type);
-    console.log(match.isExact);
+    console.log(props)
+
+    // console.log(history.location.pathname);
+    // console.log(type);
+    // console.log(match.isExact);
 
     let id = null;
 

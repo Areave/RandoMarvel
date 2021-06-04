@@ -9,7 +9,7 @@ const Header = (props) => {
       display: inline-block;
       padding: 0 20px;
       margin: 0 10px;
-      font-size: 23px;
+      font-size: 18px;
       color: red;
       text-decoration: none;
       background: white;

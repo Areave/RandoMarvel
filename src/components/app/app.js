@@ -20,7 +20,6 @@ export default class App extends Component {
             >
               <Switch>
                 {routerService.routersArray}
-                {/* {routerService.routersSubPageArray} */}
               </Switch>
             </Container>
           </div>
