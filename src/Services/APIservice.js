@@ -37,7 +37,7 @@ class APIService {
         return array[randomIndex];
       })
       .then((item) => {
-        console.log('random item', item);
+        // console.log('random item', item);
         return this.getItemInfoSet(item, type);
       });
     return await randomItem;
@@ -49,7 +49,7 @@ class APIService {
       .then((item) => item.json())
       .then((item) => item.data.results[0])
       .then((item) => this.getItemInfoSet(item, type));
-    console.log('by id', item);
+    // console.log('by id', item);
     return item;
   };
 
@@ -119,7 +119,7 @@ class APIService {
   };
 
   getCreatorInfoSet = (obj) => {
-    console.log(obj);
+    // console.log(obj);
     return {
       id: obj.id,
       name: obj.fullName,
@@ -168,50 +168,8 @@ class APIService {
     };
   };
 
-//   characters: {available: 4, collectionURI: "http://gateway.marvel.com/v1/public/stories/539/characters", items: Array(4), returned: 4}
-// comics: {available: 2, collectionURI: "http://gateway.marvel.com/v1/public/stories/539/comics", items: Array(2), returned: 2}
-// creators: {available: 7, collectionURI: "http://gateway.marvel.com/v1/public/stories/539/creators", items: Array(7), returned: 7}
-// description: ""
-// events: {available: 0, collectionURI: "http://gateway.marvel.com/v1/public/stories/539/events", items: Array(0), returned: 0}
-// id: 539
-// modified: "2018-07-27T08:51:44-0400"
-// originalIssue: {resourceURI: "http://gateway.marvel.com/v1/public/comics/4624", name: "Daredevil: Yellow (2001) #6"}
-// resourceURI: "http://gateway.marvel.com/v1/public/stories/539"
-// series: {available: 2, collectionURI: "http://gateway.marvel.com/v1/public/stories/539/series", items: Array(2), returned: 2}
-// thumbnail: null
-// title: "Interior #539"
-// type: "story"
-// __proto__: Object
 
-
-  getRandomChar = async () => {
-    const char = await fetch(this.jsonCharsUrl + this.jsonKey)
-      .then((data) => data.json())
-      .then((data) => {
-        const amount = data.data.count;
-        return data.data.results[Math.floor(Math.random() * amount)];
-      })
-      .then((charObj) => this.getCharInfoSet(charObj));
-    return char;
-  };
-
-  getComicsByUrl = async (comicsUrl) => {
-    const comicsObj = await fetch(comicsUrl + this.jsonKey)
-      .then((data) => data.json())
-      .then((comics) => comics.data.results[0])
-      .then((comics) => this.getComicsInfoSet(comics));
-    // .then(array=>array.map(comics=> this.getComicsInfoSet(comics)))
-    return comicsObj;
-  };
-
-  getComicsById = async (comicsId) => {
-    const comicsObj = await fetch(this.jsonComsUrl + comicsId + this.jsonKey)
-      .then((data) => data.json())
-      .then((comics) => comics.data.results[0])
-      .then((comics) => this.getComicsInfoSet(comics));
-    return comicsObj;
-  };
-
+  
   getCharPictureUrl = (charObj) => {
     return charObj.thumbnail.path + charObj.thumbnail.extension;
   };

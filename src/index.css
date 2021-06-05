@@ -13,26 +13,55 @@ code {
     monospace;
 }
 
+
+
 .item-link {
   cursor: pointer;
 }
 
-
-
 #root {
- min-height: 100vh;
+  min-height: 100vh;
 }
 
 .app {
-  background: url('./background-img.jpg') rgba(255,255,255,0.6);
+  background: url('./background-img.jpg') rgba(255, 255, 255, 0.6);
   background-blend-mode: color;
   min-height: 100vh;
 }
 
 .themed-container {
-  padding: 50px;
-
+  padding: 50px 100px;
+  display: flex;
+  justify-content:left;
+  align-items: flex-start!important;
 }
+
+
+.linkContainer {
+ width: 40%;
+}
+
+.list-group  {
+  display: inline-block;
+  width: 100%;
+  padding-bottom: 15px;
+}
+
+
+.list-group a {
+  font-size: 23px;
+}
+
+
+
+
+.list-group button {
+  width: 100%;
+  font-size: 24px;
+}
+
+
+
 
 /* header */
 
@@ -40,20 +69,20 @@ code {
   padding: 20px;
 }
 
-
+.nav-tabs {
+  border: 0;
+}
 
 /* card */
 
 .card {
   /* margin-left: 10% ; */
   margin: 0 auto;
-  max-width: 400px;
+  width: 40%;
   min-height: 500px;
-
-
 }
 
-.card-title{
+.card-title {
   text-align: center;
   font-weight: lighter;
   font-size: 20px;
@@ -64,11 +93,10 @@ code {
   display: block;
   position: relative;
   margin: 0 auto;
-  max-height:100%;
-  max-width:100%;
-  width:auto;
-  height:auto;
-
+  max-height: 100%;
+  max-width: 100%;
+  width: auto;
+  height: auto;
 }
 
 .card-body {
@@ -77,12 +105,11 @@ code {
   min-height: 400px;
   overflow: hidden;
   box-shadow: 1px 1px 94px 65px rgba(34, 60, 80, 0.24);
-  border: 2px outset rgba(164,58,56,0.17);
-
+  border: 2px outset rgba(164, 58, 56, 0.17);
 }
 .card-footer {
   display: flex;
-  justify-content: space-between ;
+  justify-content: space-between;
 }
 
 .card-link {
@@ -93,9 +120,7 @@ code {
   text-align: center;
 }
 
-
-
-.aboutLink{
+.aboutLink {
   cursor: pointer;
 }
 
@@ -103,3 +128,5 @@ code {
   text-align: center;
   padding: 10px;
 }
+
+

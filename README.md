@@ -4,7 +4,9 @@
 
 Готовность `80%`
 
-![](https://github.com/Areave/RandoMarvel/blob/master/public/screen.png)
+<!-- ![](https://github.com/Areave/RandoMarvel/blob/master/public/screen.png) -->
+
+![](https://github.com/Areave/RandoMarvel/blob/master/public/demonstrate.gif)
 ## Что делает
 
 - Основные данные лежат в одном объекте, методы загрузки и обработки данных типизированы, легко масштабировать
@@ -23,9 +25,7 @@
 - React Hooks
 - Компоненты высшего порядка (HOC)
 ## Что будет добавляться/исправляться
-- оптимизация кода, сведение компонентов к шаблону
-- будет исправлена задержка загрузки картинки
-- другие мелкие недочеты
+- обработка ошибок
 - тесты
 - стили покрасивее
 
